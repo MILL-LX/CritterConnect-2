@@ -34,7 +34,5 @@ The module used in this system is the **L76K GNSS Module** ( [Link to the websit
 The module responsible to play the animal sounds consists of three components: the **DFPlayer Pro** ( [Link to the website!](https://www.dfrobot.com/product-2232.html) ), the capacitive button ( [Link to website!](https://www.adafruit.com/product/1374) ) and the speaker connected to it.
 
 ![DFROBOT MP3 module](https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg)
-![DAFRUIT Standalone Momentary Capacitive Touch Sensor Breakout](https://cdn-shop.adafruit.com/970x728/1374-07.jpg)
-
 The speaker to connect to the *MP3 player* can be any speaker.
 
