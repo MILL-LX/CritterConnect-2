@@ -18,7 +18,7 @@ The assembly is depicted below:
 ![alt text](https://st.depositphotos.com/2274151/4841/i/450/depositphotos_48410095-stock-photo-sample-blue-square-grungy-stamp.jpg)
 
 ### Micontroller
-The overseer of this operation is the micontroller **Seeed Studio XIAO ESP32C3** ( [Link to the website!]([https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/)) ).
+The overseer of this operation is the micontroller **Seeed Studio XIAO ESP32C3** ( [Link to the website!]([https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/) ).
 
 ![XIAO ESP32-C3](https://media-cdn.seeedstudio.com/media/catalog/product/cache/bb49d3ec4ee05b6f018e93f896b8a25d/1/-/1-113991054-seeed-studio-xiao-esp32c3-45font_1.jpg)
 
