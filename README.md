@@ -40,17 +40,3 @@ The module responsible to play the animal sounds consists of three components: t
 
 The speaker to connect to the *MP3 player* can be any speaker.
 
-### Warn components
-The components responsible for alerting the user when entering and exiting a *ZOI* are two-fold:
-
-Firstly, the Neopixel displays the color of the animal inhabiting the *ZOI*.
-
-Secondly, the muscle wire module contracts once or twice, depending on whether the user is entering or exiting the *ZOI*, respectively.
-
-The Neopixel used in this system is the **NeoPixel RGBW LEDs** ( [Link to website!](https://www.adafruit.com/product/2758) ).
-
-![NEOPIXEL](https://cdn-shop.adafruit.com/970x728/2758-04.jpg)
-
-The muscle wire module used in this system consists of two parts: the muscle wire that contracts when ran by eletrical power and the mosfet module ( [Link to website!](https://www.tinytronics.nl/en/switches/mosfets/high-power-mosfet-module-5-36v-15a) ) connected to it.
-
-![MOSFET module](https://www.tinytronics.nl/image/cache/data/product-1958/high%20power%20mosfet-1200x1200w.jpg)
