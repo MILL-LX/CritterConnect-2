@@ -1,1 +1,2 @@
-# AnimalTrackers_V2
+# Critter Connect 2
+
