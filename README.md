@@ -90,14 +90,3 @@ The components are connected as follows:
 
 The device is designed to be compact and wearable, with all components carefully integrated into a lightweight form factor.
 
----
-
-## Future Enhancements
-
-- **Network Connectivity**: Adding Wi-Fi or Bluetooth functionality to allow remote configuration or integration with a mobile app.
-- **Advanced POI Detection**: Implementing a database of animal species and their associated locations, potentially using machine learning to classify and recommend nearby species.
-- **Extended Battery Life**: Exploring low-power techniques and optimizing energy consumption for longer usage.
-
----
-
-This enhanced description offers detailed explanations of each part of the project and adds clarity. Feel free to adapt or extend the content as needed!
