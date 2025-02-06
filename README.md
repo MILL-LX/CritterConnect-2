@@ -10,7 +10,7 @@ Additionally, the device allows the user to play the sound of the animal associa
 
 - **Location Awareness**: The device uses GPS to constantly update the user’s position and compare it with predefined Points of Interest (POIs).
 - **Animal Sounds**: When the user enters the ZOI, they can press a button to trigger the sound of the animal typically found in that area.
-- **LED Indicator**: The device lights up  when within 100 meters of a POI.
+- **LED Indicator**: The device lights up when within 100 meters of a POI.
 - **Energy Efficiency**: The device conserves energy by remaining inactive when outside the ZOI, not playing sounds or lighting up.
 
 ---
@@ -19,7 +19,7 @@ Additionally, the device allows the user to play the sound of the animal associa
 
 The system's hardware consists of four major components, which work together to provide the core functionality:
 
-1. **Microcontroller (Seeed Studio XIAO ESP32C3)**: The heart of the system, controlling all components, processing GPS data, and managing user inputs.
+1. **Microcontroller (Adafruit ESP32C6)**: The heart of the system, controlling all components, processing GPS data, and managing user inputs.
 2. **GNSS Module (L76K GNSS Module)**: A GPS receiver that provides real-time location data to the microcontroller.
 3. **MP3 Module (DFPlayer Pro)**: Plays audio files of animal sounds when triggered by the user. It interfaces with a capacitive button and speaker for the sound output.
 4. **Speaker & Button**: The user presses the button to play the sound of the animal when within the ZOI. The speaker emits the animal sound to enhance the experience.
@@ -28,13 +28,13 @@ The system's hardware consists of four major components, which work together to 
 
 ### Microcontroller
 
-The **Seeed Studio XIAO ESP32C3** is a powerful and compact microcontroller that handles communication between the GNSS module, MP3 module, and other components. It is designed for efficient processing and low power consumption, making it ideal for wearable devices.
+The **Adafruit ESP32C6** is a powerful and compact microcontroller that handles communication between the GNSS module, MP3 module, and other components. It is designed for efficient processing and low power consumption, making it ideal for wearable devices.
 
-<img src="https://media-cdn.seeedstudio.com/media/catalog/product/cache/bb49d3ec4ee05b6f018e93f896b8a25d/1/-/1-113991054-seeed-studio-xiao-esp32c3-45font_1.jpg" width=50% height=50%>
+![Adafruit ESP32C6](https://cdn-learn.adafruit.com/assets/assets/000/127/036/large1024/Adafruit_Feather_ESP32C6_Express_-_Feather_-_Top.jpg?1672743144)
 
 - **Microcontroller Features**:
   - Compact and low-power design
-  - Integrated Wi-Fi and Bluetooth for future network capabilities
+  - Integrated Wi-Fi 6 and Bluetooth for future network capabilities
   - GPIO pins for connecting external components like buttons, LEDs, and sensors
   - Low-latency and high-speed processing
 
@@ -44,7 +44,7 @@ The **Seeed Studio XIAO ESP32C3** is a powerful and compact microcontroller that
 
 The **L76K GNSS Module** is used to obtain the user’s geographic coordinates. This module communicates with the microcontroller, sending updated location data. The precise GPS data is then used to calculate the proximity to Points of Interest (POIs).
 
-<img src="https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg" width=50% height=50%>
+![L76K GNSS Module](https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg)
 
 - **Key Features**:
   - Provides accurate latitude and longitude coordinates
@@ -55,9 +55,9 @@ The **L76K GNSS Module** is used to obtain the user’s geographic coordinates. 
 
 ### MP3 Module
 
-The **DFPlayer Pro** is responsible for playing MP3 files of animal sounds. When the user presses the capacitive button and is within the ZOI, the system triggers the audio playback, providing an immersive animal sound experience. 
+The **DFPlayer Pro** is responsible for playing MP3 files of animal sounds. When the user presses the capacitive button and is within the ZOI, the system triggers the audio playback, providing an immersive animal sound experience.
 
-<img src="https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg" width=50% height=50%>
+![DFPlayer Pro](https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg)
 
 - **MP3 Player Features**:
   - Supports microSD cards to store MP3 audio files
@@ -83,10 +83,9 @@ The **speaker** connected to the MP3 module plays the sounds, while the **capaci
 
 The components are connected as follows:
 
-1. The **XIAO ESP32C3** microcontroller is the central unit and interfaces with all components.
+1. The **Adafruit ESP32C6** microcontroller is the central unit and interfaces with all components.
 2. The **L76K GNSS Module** is connected to the microcontroller via UART or I2C communication to provide location data.
 3. The **DFPlayer Pro** is connected to the microcontroller and the speaker, providing audio playback.
 4. The **capacitive button** is wired to the microcontroller for user input, triggering the animal sound when pressed.
 
 The device is designed to be compact and wearable, with all components carefully integrated into a lightweight form factor.
-
