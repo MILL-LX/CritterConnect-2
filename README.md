@@ -22,18 +22,18 @@ The circuit consists of four main components:
 
 The core of the system is the **Seeed Studio XIAO ESP32C3**, which manages the other components.
 
-![XIAO ESP32-C3](https://media-cdn.seeedstudio.com/media/catalog/product/cache/bb49d3ec4ee05b6f018e93f896b8a25d/1/-/1-113991054-seeed-studio-xiao-esp32c3-45font_1.jpg =250x)
+![XIAO ESP32-C3](https://media-cdn.seeedstudio.com/media/catalog/product/cache/bb49d3ec4ee05b6f018e93f896b8a25d/1/-/1-113991054-seeed-studio-xiao-esp32c3-45font_1.jpg | width=250)
 
 ### GNSS Module
 
 The **L76K GNSS Module** is responsible for determining the user's location and communicating it to the microcontroller.
 
-![XIAO GNSS module](https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg =250x)
+![XIAO GNSS module](https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg | width=250)
 
 ### MP3 Module
 
 The **DFPlayer Pro** is responsible for playing the animal sounds when triggered. The capacitive button and speaker complete the system for sound playback.
 
-![DFROBOT MP3 module](https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg =250x)
+![DFROBOT MP3 module](https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg | width=250)
 
 The speaker can be any compatible speaker connected to the *MP3* module.
