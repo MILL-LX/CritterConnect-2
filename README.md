@@ -31,6 +31,10 @@ The system's hardware consists of four major components, which work together to 
 The **Adafruit ESP32C6** is a powerful and compact microcontroller that handles communication between the GNSS module, MP3 module, and other components. It is designed for efficient processing and low power consumption, making it ideal for wearable devices.
 
 
+
+<img src="https://cdn-shop.adafruit.com/970x728/5933-08.jpg" width=50% height=50%>
+
+
 - **Microcontroller Features**:
   - Compact and low-power design
   - Integrated Wi-Fi 6 and Bluetooth for future network capabilities
