@@ -30,7 +30,6 @@ The system's hardware consists of four major components, which work together to 
 
 The **Adafruit ESP32C6** is a powerful and compact microcontroller that handles communication between the GNSS module, MP3 module, and other components. It is designed for efficient processing and low power consumption, making it ideal for wearable devices.
 
-![Adafruit ESP32C6](https://cdn-learn.adafruit.com/assets/assets/000/127/036/large1024/Adafruit_Feather_ESP32C6_Express_-_Feather_-_Top.jpg?1672743144)
 
 - **Microcontroller Features**:
   - Compact and low-power design
@@ -44,7 +43,7 @@ The **Adafruit ESP32C6** is a powerful and compact microcontroller that handles 
 
 The **L76K GNSS Module** is used to obtain the user’s geographic coordinates. This module communicates with the microcontroller, sending updated location data. The precise GPS data is then used to calculate the proximity to Points of Interest (POIs).
 
-![L76K GNSS Module](https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg)
+<img src="https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg" width=50% height=50%>
 
 - **Key Features**:
   - Provides accurate latitude and longitude coordinates
@@ -57,7 +56,8 @@ The **L76K GNSS Module** is used to obtain the user’s geographic coordinates. 
 
 The **DFPlayer Pro** is responsible for playing MP3 files of animal sounds. When the user presses the capacitive button and is within the ZOI, the system triggers the audio playback, providing an immersive animal sound experience.
 
-![DFPlayer Pro](https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg)
+
+<img src="https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg" width=50% height=50%>
 
 - **MP3 Player Features**:
   - Supports microSD cards to store MP3 audio files
