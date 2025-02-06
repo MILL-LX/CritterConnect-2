@@ -1,38 +1,39 @@
 # Critter Connect 2
+
 The project involves creating a wearable device equipped with *GPS* functionality. This device continuously accesses *GPS* coordinates to determine the user's location. Using these coordinates, it identifies the nearest predefined *Point of Interest* (POI). If this *POI* is within 100 meters of the user, the wearable lights up with a color associated with the animal species typical to that area.
 
 ## Features
-- It allows to play the sound of the animal if the user is under 100 meters from the *POI* by pressing the button;
-- If the user are not in the *Zone of Interest* (ZOI) the lights do not light up nor the *MP3* plays any sound;
+- It allows playing the sound of the animal if the user is within 100 meters from the *POI* by pressing the button.
+- If the user is outside the *Zone of Interest* (ZOI), the lights do not light up, and the *MP3* does not play any sound.
 
+---
 
 ## Circuit Design and Assembly
 
-The circuit comprises four groups of components:
+The circuit consists of four main components:
 
-1. The microcontroller, which oversees the operation of other components.
-2. The GNSS module, responsible for satellite communication to determine current location.
-3. The MP3 module, along with the speaker and button, used to play animal sounds when inside the ZOI (Zone of Interest).
+1. **Microcontroller** – Oversees the operation of all other components.
+2. **GNSS Module** – Determines the user’s location using GPS coordinates.
+3. **MP3 Module** – Plays animal sounds when inside the ZOI, using a speaker and a button for user interaction.
 
-The assembly is depicted below:
-![alt text](https://st.depositphotos.com/2274151/4841/i/450/depositphotos_48410095-stock-photo-sample-blue-square-grungy-stamp.jpg)
+---
 
-### Micontroller
-The overseer of this operation is the micontroller **Seeed Studio XIAO ESP32C3** ( [Link to the website!]([https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/) ).
+### Microcontroller
 
-![XIAO ESP32-C3](https://media-cdn.seeedstudio.com/media/catalog/product/cache/bb49d3ec4ee05b6f018e93f896b8a25d/1/-/1-113991054-seeed-studio-xiao-esp32c3-45font_1.jpg)
+The core of the system is the **Seeed Studio XIAO ESP32C3**, which manages the other components.
 
-Every other component is connected to the micontroler.
+![XIAO ESP32-C3](https://media-cdn.seeedstudio.com/media/catalog/product/cache/bb49d3ec4ee05b6f018e93f896b8a25d/1/-/1-113991054-seeed-studio-xiao-esp32c3-45font_1.jpg =250x)
 
-### GNSS module
-This module is responsible to determine the current location of the user and communicate it to the micontroller.
-The module used in this system is the **L76K GNSS Module** ( [Link to the website!](https://www.seeedstudio.com/L76K-GNSS-Module-for-Seeed-Studio-XIAO-p-5864.html) ).
+### GNSS Module
 
-![XIAO GNSS module](https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg)
+The **L76K GNSS Module** is responsible for determining the user's location and communicating it to the microcontroller.
 
-### MP3 module
-The module responsible to play the animal sounds consists of three components: the **DFPlayer Pro** ( [Link to the website!](https://www.dfrobot.com/product-2232.html) ), the capacitive button ( [Link to website!](https://www.adafruit.com/product/1374) ) and the speaker connected to it.
+![XIAO GNSS module](https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg =250x)
 
-![DFROBOT MP3 module](https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg)
-The speaker to connect to the *MP3 player* can be any speaker.
+### MP3 Module
 
+The **DFPlayer Pro** is responsible for playing the animal sounds when triggered. The capacitive button and speaker complete the system for sound playback.
+
+![DFROBOT MP3 module](https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg =250x)
+
+The speaker can be any compatible speaker connected to the *MP3* module.
