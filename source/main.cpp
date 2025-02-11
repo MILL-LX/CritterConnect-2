@@ -1,41 +1,42 @@
 #include <TinyGPSPlus.h>
+#include <Adafruit_NeoPixel.h>
 #include <SoftwareSerial.h>
 #include <HardwareSerial.h>
 #include <Wire.h>
 #include <DFRobot_DF1201S.h>
 #include <Stepper.h>
 
-/*************************************
-  Pin and Communication Configurations
-*************************************/
-// GPS Module Serial Communication
-static const int RXPin = D7, TXPin = D6;
-static const uint32_t GPSBaud = 9600;
+#define PIN    16  // Data pin for NeoPixel
+#define NUMPIXELS 1  // Number of NeoPixels
 
-// MP3 Module Serial Communication
-static const int RXPin_mp3 = 7, TXPin_mp3 = 21;
-static const uint32_t BaudRate_mp3 = 115200;
 
-// Stepper Motor Control Pins
-#define IN1 3
-#define IN2 4
-#define IN3 5
-#define IN4 6
+// Define the GPS Serial Port (Use Hardware Serial1)
+#define RXPin 0  // Feather M4 RX1 (connect to GPS TX)
+#define TXPin 1  // Feather M4 TX1 (connect to GPS RX)
+#define GPSBaud 9600
 
-// Button Pin
-#define BTN_PIN D8
 
-// Earth's radius in meters for Haversine distance calculation
-const float R = 6371000;
-
-// LED Pin
-const int led = D10;
 
 // Stepper motor rotation control variables
 int Voltas_Motor = 3;
-const int stepsPerRevolution = 100;
+const int stepsPerRevolution = 1700;
 
-// Control flags
+
+// TinyGPSPlus object
+TinyGPSPlus gps;
+Adafruit_NeoPixel strip(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+SoftwareSerial DF1201SSerial(25, 24);
+DFRobot_DF1201S DF1201S;
+Stepper stepper(stepsPerRevolution, 10, 11, 12, 13);
+
+
+// Button Pin
+#define BTN_PIN 6
+
+
+
+
+
 int flag;
 int intervalBlink = 1000;
 int BlinkState = HIGH;
@@ -52,69 +53,67 @@ struct CoordinatesBirds {
 int numCoordinates;
 CoordinatesBirds *coordinates;
 
-/*************************************
-  Function Prototypes
-*************************************/
+// Earth's radius in meters for Haversine distance calculation
+const float R = 6371000;
+
+
+
+CoordinatesBirds *loadCoordinatesFiles(int &numCoordinates);
 float haversineDistance(float lat1, float lon1, float lat2, float lon2);
 float toRadians(float degree);
-CoordinatesBirds *loadCoordinatesFiles(int &numCoordinates);
 void TesteBegin();
 
 
-// GPS, Stepper, and MP3 Module Objects
-TinyGPSPlus gps;
-SoftwareSerial ss(RXPin, TXPin);
-Stepper myStepper(stepsPerRevolution, IN4, IN3, IN2, IN1);
-DFRobot_DF1201S DF1201S;
-HardwareSerial DF1201SSerial(0);
-
-/*************************************
-  Function: setup
-  Description: Initializes components and configurations.
-*************************************/
 void setup() {
-  Serial.begin(115200);
-  pinMode(led, OUTPUT);
-  pinMode(BTN_PIN, INPUT_PULLUP);
-  ss.begin(GPSBaud);
-
-  // Initialize MP3 Module
-  Serial.println("Initializing MP3 module...");
-  DF1201SSerial.begin(BaudRate_mp3, SERIAL_8N1, RXPin_mp3, TXPin_mp3);
-  while (!DF1201S.begin(DF1201SSerial)) {
-    Serial.println("MP3 Init failed, check wiring!");
+  Serial.begin(115200);   // USB Serial for debugging
+  Serial1.begin(GPSBaud); // GPS connected to Serial1
+  strip.begin();
+  DF1201SSerial.begin(115200);
+  while(!DF1201S.begin(DF1201SSerial)){
+    Serial.println("Init failed, please check the wire connection!");
     delay(1000);
   }
-  
+
+
   // MP3 Module Settings
   DF1201S.setVol(100);
   DF1201S.switchFunction(DF1201S.MUSIC);
   DF1201S.setPlayMode(DF1201S.SINGLE);
   DF1201S.setPrompt(false);
 
-  // Set stepper motor speed
-  myStepper.setSpeed(1200);
+  Serial.println(F("GPS Example for Adafruit Feather M4 Express"));
+  Serial.print(F("Using TinyGPSPlus library v. "));
+  Serial.println(TinyGPSPlus::libraryVersion());
 
-  // Load predefined bird coordinates
+  pinMode(BTN_PIN, INPUT_PULLUP); // Enable internal pull-up resistor
+
+  stepper.setSpeed(60);
+
+
+
+
+    // Load predefined bird coordinates
   coordinates = loadCoordinatesFiles(numCoordinates);
+
 
   // Perform hardware test
   TesteBegin();
+  
+  DF1201S.pause();
 }
 
-/*************************************
-  Function: loop
-  Description: Continuously checks GPS data and updates output.
-*************************************/
 void loop() {
-  while (ss.available() > 0)
-    if (gps.encode(ss.read()))
+  // Read GPS data
+  while (Serial1.available() > 0) {
+    if (gps.encode(Serial1.read())) {
       displayInfo();
+    }
+  }
 
-  // Check if GPS data is being received
+  // Check if GPS is connected
   if (millis() > 5000 && gps.charsProcessed() < 10) {
-    Serial.println("No GPS detected: check wiring.");
-    while (true);
+    Serial.println(F("No GPS detected: check wiring."));
+    while (true); // Stop program if no GPS detected
   }
 }
 
@@ -169,60 +168,85 @@ void displayInfo() {
     Serial.println(distancia);
     Serial.println();
 
+
     
     if (distancia < 40) {
       Serial.println("Musica");
       if (digitalRead(BTN_PIN) == LOW) {
         Serial.println("Botão pressionado");
+        
         if (coordinates[i].species == 1) {
           DF1201S.playFileNum(2);
           delay(8000);
+          DF1201S.pause();
+          DF1201S.next();
+          DF1201S.pause();
         }
         if (coordinates[i].species == 2) {
           DF1201S.playFileNum(3);
           delay(8000);
+          DF1201S.pause();
+          DF1201S.next();
+          DF1201S.pause();
         }
+        
       } else {
         Serial.println("Botão não pressionado");
-        DF1201S.pause();
+        //DF1201S.pause();
       }
       
-      digitalWrite(D10, HIGH);
+      strip.setPixelColor(0, strip.Color(255, 255, 255));  // Red color
+      strip.show();
       flag = i;
 
       while (Voltas_Motor != 0) {
-        for (int i = 0; i < 16; i++) {
+        /*for (int i = 0; i < 16; i++) {
           Serial.println("counterclockwise");
-          myStepper.step(stepsPerRevolution);
+          stepper.step(stepsPerRevolution);
         }
         for (int j = 0; j < 16; j++) {
           Serial.println("counterclockwise");
-          myStepper.step(-stepsPerRevolution);
-        }
+          stepper.step(-stepsPerRevolution);
+        }*/
+        stepper.step(stepsPerRevolution);
+        stepper.step(-stepsPerRevolution);
         Voltas_Motor = Voltas_Motor - 1;
       }
     }
 
     if (distancia >= 40 && distancia <= 50) {
       unsigned long currentMILLIS = millis();
-      if (currentMILLIS - previousBlink >= intervalBlink) {
+        if (currentMILLIS - previousBlink >= intervalBlink) {
         previousBlink = currentMILLIS;
         if (BlinkState == HIGH) {
           BlinkState = LOW;
         } else {
           BlinkState = HIGH;
         }
-        digitalWrite(D10, BlinkState);
+        if(BlinkState == HIGH){
+          strip.setPixelColor(0, strip.Color(255, 255, 255));  // Red color
+          strip.show();
+        }
+        if(BlinkState == LOW){
+          strip.setPixelColor(0, strip.Color(0, 0, 0));  // Red color
+          strip.show();
+        }
       }
     }
 
     if (distancia > 50 && flag == i) {
-      DF1201S.pause();
-      digitalWrite(D10, LOW);
+      //DF1201S.pause();
+      strip.setPixelColor(0, strip.Color(0, 0, 0));  // Red color
+      strip.show();
       Voltas_Motor = 3;
     }
   }
 }
+
+
+
+
+
 
 
 /*************************************
@@ -275,6 +299,8 @@ CoordinatesBirds *loadCoordinatesFiles(int &numCoordinates) {
   return coordinates;
 }
 
+
+
 /*************************************
   Function: TesteBegin
   Description: Performs hardware tests.
@@ -282,15 +308,25 @@ CoordinatesBirds *loadCoordinatesFiles(int &numCoordinates) {
 void TesteBegin() {
   Serial.println("Starting Test...");
   for (int i = 0; i < 3; i++) {
-    digitalWrite(led, HIGH);
+    strip.setPixelColor(0, strip.Color(255, 255, 255));  
+    strip.show();
     delay(500);
-    digitalWrite(led, LOW);
+    strip.setPixelColor(0, strip.Color(0, 0, 0));
+    strip.show();
     delay(500);
   }
-  for (int i = 0; i < 16; i++) myStepper.step(stepsPerRevolution);
-  for (int j = 0; j < 16; j++) myStepper.step(-stepsPerRevolution);
+  //for (int i = 0; i < 16; i++) stepper.step(stepsPerRevolution);
+  //for (int j = 0; j < 16; j++) stepper.step(-stepsPerRevolution);
+  stepper.step(stepsPerRevolution);
+  stepper.step(-stepsPerRevolution);
+  stepper.step(stepsPerRevolution);
+  stepper.step(-stepsPerRevolution);
+  stepper.step(stepsPerRevolution);
+  stepper.step(-stepsPerRevolution);
   DF1201S.playFileNum(4);
   delay(2000);
   DF1201S.pause();
   Serial.println("Test Completed!");
+  DF1201S.next();
+  DF1201S.pause();
 }
