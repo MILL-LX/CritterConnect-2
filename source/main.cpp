@@ -28,6 +28,8 @@ Adafruit_NeoPixel strip(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 SoftwareSerial DF1201SSerial(25, 24);
 DFRobot_DF1201S DF1201S;
 Stepper stepper(stepsPerRevolution, 10, 11, 12, 13);
+//Stepper stepper(stepsPerRevolution, 3, 7, 8, 9);
+
 
 
 // Button Pin
