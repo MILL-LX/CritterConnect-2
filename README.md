@@ -90,7 +90,7 @@ The **Adafruit Mini Oval Speaker** is used for playing the animal sounds, and th
 
 The **Adafruit TB6612 1.2A DC/Stepper Motor Driver** is a motor driver module used to control motors for additional features, such as haptic feedback, vibration, or moving parts in the wearable device.
 
-![TB6612 Motor Driver](https://cdn-learn.adafruit.com/assets/assets/000/098/784/large1024/adafruit_products_TB6612.jpg)
+![TB6612 Motor Driver](https://cdn-shop.adafruit.com/970x728/2448-06.jpg)
 
 #### Features:
 - Drives DC and stepper motors
