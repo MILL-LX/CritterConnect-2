@@ -30,7 +30,7 @@ The system's hardware consists of four major components, which work together to 
 
 The **Adafruit Feather RP2040** is a powerful and compact microcontroller that handles communication between the GNSS module, MP3 module, and other components. It is designed for efficient processing and low power consumption, making it ideal for wearable devices.
 
-![Adafruit Feather RP2040](https://cdn-learn.adafruit.com/assets/assets/000/100/345/large1024/adafruit_products_FeatherRP_top_angle.jpg?1614788869)
+![Adafruit Feather RP2040]<img src="https://cdn-learn.adafruit.com/assets/assets/000/100/345/large1024/adafruit_products_FeatherRP_top_angle.jpg?1614788869" width=50% height=50%>
 
 - **Microcontroller Features**:
   - Dual-core ARM Cortex M0+ processor
@@ -44,7 +44,7 @@ The **Adafruit Feather RP2040** is a powerful and compact microcontroller that h
 
 The **L76K GNSS Module** is used to obtain the user’s geographic coordinates. This module communicates with the microcontroller, sending updated location data. The precise GPS data is then used to calculate the proximity to Points of Interest (POIs).
 
-![L76K GNSS Module](https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg)
+![L76K GNSS Module]<img src="https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg" width=50% height=50%>
 
 - **Key Features**:
   - Provides accurate latitude and longitude coordinates
@@ -57,7 +57,7 @@ The **L76K GNSS Module** is used to obtain the user’s geographic coordinates. 
 
 The **DFPlayer Pro** is responsible for playing MP3 files of animal sounds. When the user presses the push button and is within the ZOI, the system triggers the audio playback, providing an immersive animal sound experience.
 
-![DFPlayer Pro](https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg)
+![DFPlayer Pro]<img src="https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg" width=50% height=50%>
 
 - **MP3 Player Features**:
   - Supports microSD cards to store MP3 audio files
@@ -73,7 +73,7 @@ The **Adafruit Mini Oval Speaker** is used for playing the animal sounds, and th
 
 #### **Speaker**
 
-![Adafruit Mini Oval Speaker](https://cdn-shop.adafruit.com/970x728/3923-02.jpg)
+![Adafruit Mini Oval Speaker]<img src="https://cdn-shop.adafruit.com/970x728/3923-02.jpg" width=50% height=50%>
 
 - **Features**:
   - Compact 8Ω speaker
@@ -82,7 +82,7 @@ The **Adafruit Mini Oval Speaker** is used for playing the animal sounds, and th
 
 #### **Button**
 
-![Adafruit Mini On/Off Push Button](https://cdn-shop.adafruit.com/970x728/3870-00.jpg)
+![Adafruit Mini On/Off Push Button]<img src="https://cdn-shop.adafruit.com/970x728/3870-00.jpg" width=50% height=50%>
 
 - **Features**:
   - Small and durable push button
