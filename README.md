@@ -114,6 +114,9 @@ The device is designed to be compact and wearable, with all components carefully
 
 ## Power Supply
 
+
+<img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fecocell.com.au%2Fwp-content%2Fuploads%2Fm%2Flipo%2Flipo-400-502535-3w_n.jpg&f=1&nofb=1&ipt=8e4864c284452f1a632edc6070d67a3ab342d56719a59735ab3a75d4d97fa855&ipo=images" width=50% height=50%>
+
 The device can be powered using a **LiPo battery**, which can be charged via the **Adafruit Feather RP2040's built-in charging circuit**. This allows for easy recharging and ensures that the device remains portable and efficient.
 
 ---
