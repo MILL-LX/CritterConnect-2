@@ -1,10 +1,10 @@
-#include <TinyGPSPlus.h>
-#include <Adafruit_NeoPixel.h>
-#include <SoftwareSerial.h>
-#include <HardwareSerial.h>
-#include <Wire.h>
-#include <DFRobot_DF1201S.h>
-#include <Stepper.h>
+#include <TinyGPSPlus.h>  // Library for GPS functionality
+#include <Adafruit_NeoPixel.h>  // Library for NeoPixel LED control
+#include <SoftwareSerial.h>  // Library for software serial communication
+#include <HardwareSerial.h>  // Library for hardware serial communication
+#include <Wire.h>  // Library for I2C communication
+#include <DFRobot_DF1201S.h>  // Library for MP3 module control
+#include <Stepper.h>  // Library for stepper motor control
 
 #define PIN    16  // Data pin for NeoPixel
 #define NUMPIXELS 1  // Number of NeoPixels
@@ -16,19 +16,19 @@
 #define GPSBaud 9600
 
 
-
 // Stepper motor rotation control variables
-int Voltas_Motor = 3;
-const int stepsPerRevolution = 1700;
+int Voltas_Motor = 3;  // Number of motor rotations
+const int stepsPerRevolution = 1700;  // Number of steps for one full revolution
 
 
-// TinyGPSPlus object
+
+// TinyGPSPlus object for GPS functionality
 TinyGPSPlus gps;
-Adafruit_NeoPixel strip(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-SoftwareSerial DF1201SSerial(25, 24);
-DFRobot_DF1201S DF1201S;
-Stepper stepper(stepsPerRevolution, 10, 11, 12, 13);
-Stepper stepper2(stepsPerRevolution, 3, 7, 8, 9);
+Adafruit_NeoPixel strip(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);  // NeoPixel object
+SoftwareSerial DF1201SSerial(25, 24);  // SoftwareSerial for MP3 module communication
+DFRobot_DF1201S DF1201S;  // MP3 module object
+Stepper stepper(stepsPerRevolution, 10, 11, 12, 13);  // Stepper motor 1 (4-pin connection)
+Stepper stepper2(stepsPerRevolution, 3, 7, 8, 9);  // Stepper motor 2 (4-pin connection)
 
 
 
@@ -39,22 +39,22 @@ Stepper stepper2(stepsPerRevolution, 3, 7, 8, 9);
 
 
 
-int flag;
-const int intervalBlink = 200; 
-const int pauseTime = 10000;  
-unsigned long previousBlink = 0;
-unsigned long startBlinkTime = 0;
-bool isBlinking = true;
-int blinkCount = 0;
-bool BlinkState = LOW;
+int flag;  // Variable for flagging LED actions
+const int intervalBlink = 200;  // Interval for LED blinking (in ms)
+const int pauseTime = 10000;  // Pause time for LED after blinking (in ms)
+unsigned long previousBlink = 0;  // Time tracking for blinking
+unsigned long startBlinkTime = 0;  // Start time for pause after blinking
+bool isBlinking = true;  // Flag to check if LED should be blinking
+int blinkCount = 0;  // Counter for blink cycles
+bool BlinkState = LOW;  // Current state of the LED (on/off)
 
-int Brilho = 150;
+int Brilho = 150;  // Brightness level for NeoPixel
 
 // Structure to hold coordinates and species information
 struct CoordinatesBirds {
-  float longitude;
-  float latitude;
-  int species;
+  float longitude;  // Longitude of bird location
+  float latitude;   // Latitude of bird location
+  int species;      // Species ID
 };
 
 // Number of coordinates and pointer to coordinate array
@@ -65,7 +65,7 @@ CoordinatesBirds *coordinates;
 const float R = 6371000;
 
 
-
+// Function prototypes
 CoordinatesBirds *loadCoordinatesFiles(int &numCoordinates);
 float haversineDistance(float lat1, float lon1, float lat2, float lon2);
 float toRadians(float degree);
@@ -73,22 +73,24 @@ void TesteBegin();
 
 
 void setup() {
-  Serial.begin(115200);   // USB Serial for debugging
-  Serial1.begin(GPSBaud); // GPS connected to Serial1
-  strip.begin();
-  strip.setBrightness(Brilho);  
-  DF1201SSerial.begin(115200);
+
+  
+  Serial.begin(115200);  // Initialize USB Serial for debugging
+  Serial1.begin(GPSBaud);  // Initialize GPS on Serial1
+  strip.begin();  // Initialize NeoPixel strip
+  strip.setBrightness(Brilho);  // Set NeoPixel brightness  
+  DF1201SSerial.begin(115200);  // Initialize communication with MP3 module
   while(!DF1201S.begin(DF1201SSerial)){
     Serial.println("Init failed, please check the wire connection!");
-    delay(1000);
+    delay(1000);  // Retry if initialization fails
   }
 
 
   // MP3 Module Settings
-  DF1201S.setVol(100);
-  DF1201S.switchFunction(DF1201S.MUSIC);
-  DF1201S.setPlayMode(DF1201S.SINGLE);
-  DF1201S.setPrompt(false);
+  DF1201S.setVol(100);  // Set volume
+  DF1201S.switchFunction(DF1201S.MUSIC);  // Set MP3 module mode to music
+  DF1201S.setPlayMode(DF1201S.SINGLE);  // Set single track play mode
+  DF1201S.setPrompt(false);  // Disable prompt sounds
 
   Serial.println(F("GPS Example for Adafruit Feather M4 Express"));
   Serial.print(F("Using TinyGPSPlus library v. "));
@@ -96,19 +98,18 @@ void setup() {
 
   pinMode(BTN_PIN, INPUT_PULLUP); // Enable internal pull-up resistor
 
-  stepper.setSpeed(40);
-  stepper2.setSpeed(80);
+  stepper.setSpeed(40);  // Set speed for stepper motor 1
+  stepper2.setSpeed(80);  // Set speed for stepper motor 2
 
 
 
-    // Load predefined bird coordinates
+  // Load predefined bird coordinates
   coordinates = loadCoordinatesFiles(numCoordinates);
-
 
   // Perform hardware test
   TesteBegin();
   
-  DF1201S.pause();
+  DF1201S.pause();  // Pause the MP3 playback after the test
 }
 
 void loop() {
@@ -171,16 +172,19 @@ void displayInfo() {
   Serial.println();
   Serial.println(numCoordinates);
 
+  // Loop through predefined coordinates and calculate distance
   for (int i = 0; i < numCoordinates; i++) {
     float distancia = haversineDistance(coordinates[i].latitude, coordinates[i].longitude, gps.location.lat(), gps.location.lng());
 
 
-    
+    // If the distance is less than 40 meters
     if (distancia < 40) {
       Serial.println("Musica");
-      if (digitalRead(BTN_PIN) == LOW) {
+      if (digitalRead(BTN_PIN) == LOW) {   // Check if button is pressed
         Serial.println("Botão pressionado");
-        
+
+
+        // Control motor and play music based on species ID
         if (coordinates[i].species == 1) {
           while (Voltas_Motor != 0) {
             
