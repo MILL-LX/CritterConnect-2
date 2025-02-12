@@ -19,27 +19,24 @@ Additionally, the device allows the user to play the sound of the animal associa
 
 The system's hardware consists of four major components, which work together to provide the core functionality:
 
-1. **Microcontroller (Adafruit ESP32C6)**: The heart of the system, controlling all components, processing GPS data, and managing user inputs.
+1. **Microcontroller (Adafruit Feather RP2040)**: The heart of the system, controlling all components, processing GPS data, and managing user inputs.
 2. **GNSS Module (L76K GNSS Module)**: A GPS receiver that provides real-time location data to the microcontroller.
-3. **MP3 Module (DFPlayer Pro)**: Plays audio files of animal sounds when triggered by the user. It interfaces with a capacitive button and speaker for the sound output.
+3. **MP3 Module (DFPlayer Pro)**: Plays audio files of animal sounds when triggered by the user. It interfaces with a push button and speaker for the sound output.
 4. **Speaker & Button**: The user presses the button to play the sound of the animal when within the ZOI. The speaker emits the animal sound to enhance the experience.
 
 ---
 
 ### Microcontroller
 
-The **Adafruit ESP32C6** is a powerful and compact microcontroller that handles communication between the GNSS module, MP3 module, and other components. It is designed for efficient processing and low power consumption, making it ideal for wearable devices.
+The **Adafruit Feather RP2040** is a powerful and compact microcontroller that handles communication between the GNSS module, MP3 module, and other components. It is designed for efficient processing and low power consumption, making it ideal for wearable devices.
 
-
-
-<img src="https://cdn-shop.adafruit.com/970x728/5933-08.jpg" width=50% height=50%>
-
+![Adafruit Feather RP2040](https://cdn-shop.adafruit.com/970x728/4884-00.jpg)
 
 - **Microcontroller Features**:
-  - Compact and low-power design
-  - Integrated Wi-Fi 6 and Bluetooth for future network capabilities
-  - GPIO pins for connecting external components like buttons, LEDs, and sensors
-  - Low-latency and high-speed processing
+  - Dual-core ARM Cortex M0+ processor
+  - 264KB RAM and 8MB Flash storage
+  - Multiple GPIO pins for interfacing with sensors, buttons, and modules
+  - Low power consumption for battery efficiency
 
 ---
 
@@ -47,7 +44,7 @@ The **Adafruit ESP32C6** is a powerful and compact microcontroller that handles 
 
 The **L76K GNSS Module** is used to obtain the user’s geographic coordinates. This module communicates with the microcontroller, sending updated location data. The precise GPS data is then used to calculate the proximity to Points of Interest (POIs).
 
-<img src="https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg" width=50% height=50%>
+![L76K GNSS Module](https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg)
 
 - **Key Features**:
   - Provides accurate latitude and longitude coordinates
@@ -58,10 +55,9 @@ The **L76K GNSS Module** is used to obtain the user’s geographic coordinates. 
 
 ### MP3 Module
 
-The **DFPlayer Pro** is responsible for playing MP3 files of animal sounds. When the user presses the capacitive button and is within the ZOI, the system triggers the audio playback, providing an immersive animal sound experience.
+The **DFPlayer Pro** is responsible for playing MP3 files of animal sounds. When the user presses the push button and is within the ZOI, the system triggers the audio playback, providing an immersive animal sound experience.
 
-
-<img src="https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg" width=50% height=50%>
+![DFPlayer Pro](https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg)
 
 - **MP3 Player Features**:
   - Supports microSD cards to store MP3 audio files
@@ -73,13 +69,25 @@ The **DFPlayer Pro** is responsible for playing MP3 files of animal sounds. When
 
 ### Speaker & Button
 
-The **speaker** connected to the MP3 module plays the sounds, while the **capacitive button** allows the user to activate the sound playback. The speaker can be any compatible speaker connected to the module, ensuring flexibility in choosing the right speaker for your needs.
+The **Adafruit Mini Oval Speaker** is used for playing the animal sounds, and the **Adafruit Mini On/Off Push Button** allows the user to activate the sound playback. These components provide reliable and compact interaction for the wearable device.
 
-- **Speaker Features**:
-  - Can be any standard speaker that supports audio output from the MP3 module
-  - Compact and energy-efficient to match the wearable device's design
-- **Button**:
-  - Capacitive touch button for easy and reliable user interaction
+#### **Speaker**
+
+![Adafruit Mini Oval Speaker](https://cdn-shop.adafruit.com/970x728/3923-02.jpg)
+
+- **Features**:
+  - Compact 8Ω speaker
+  - High-quality audio output for clear animal sounds
+  - Low power consumption for efficiency
+
+#### **Button**
+
+![Adafruit Mini On/Off Push Button](https://cdn-shop.adafruit.com/970x728/4826-00.jpg)
+
+- **Features**:
+  - Small and durable push button
+  - Used to trigger sound playback
+  - Easy to integrate into wearable designs
 
 ---
 
@@ -87,9 +95,9 @@ The **speaker** connected to the MP3 module plays the sounds, while the **capaci
 
 The components are connected as follows:
 
-1. The **Adafruit ESP32C6** microcontroller is the central unit and interfaces with all components.
+1. The **Adafruit Feather RP2040** microcontroller is the central unit and interfaces with all components.
 2. The **L76K GNSS Module** is connected to the microcontroller via UART or I2C communication to provide location data.
-3. The **DFPlayer Pro** is connected to the microcontroller and the speaker, providing audio playback.
-4. The **capacitive button** is wired to the microcontroller for user input, triggering the animal sound when pressed.
+3. The **DFPlayer Pro** is connected to the microcontroller and the Adafruit Mini Oval Speaker, providing audio playback.
+4. The **Adafruit Mini On/Off Push Button** is wired to the microcontroller for user input, triggering the animal sound when pressed.
 
 The device is designed to be compact and wearable, with all components carefully integrated into a lightweight form factor.
