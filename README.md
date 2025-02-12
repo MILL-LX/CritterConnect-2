@@ -30,7 +30,7 @@ The system's hardware consists of four major components, which work together to 
 
 The **Adafruit Feather RP2040** is a powerful and compact microcontroller that handles communication between the GNSS module, MP3 module, and other components. It is designed for efficient processing and low power consumption, making it ideal for wearable devices.
 
-![Adafruit Feather RP2040](https://cdn-shop.adafruit.com/970x728/4884-00.jpg)
+![Adafruit Feather RP2040](https://cdn-learn.adafruit.com/assets/assets/000/100/345/large1024/adafruit_products_FeatherRP_top_angle.jpg?1614788869)
 
 - **Microcontroller Features**:
   - Dual-core ARM Cortex M0+ processor
@@ -82,7 +82,7 @@ The **Adafruit Mini Oval Speaker** is used for playing the animal sounds, and th
 
 #### **Button**
 
-![Adafruit Mini On/Off Push Button](https://cdn-shop.adafruit.com/970x728/4826-00.jpg)
+![Adafruit Mini On/Off Push Button](https://cdn-shop.adafruit.com/970x728/3870-00.jpg)
 
 - **Features**:
   - Small and durable push button
