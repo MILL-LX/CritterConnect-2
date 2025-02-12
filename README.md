@@ -116,8 +116,12 @@ The firmware for Critter Connect 2 is written in **Arduino** and is compatible w
 - **TinyGPSPlus**: For interfacing with the L76K GNSS module to fetch GPS data.
 - **DFRobot_DF1201S**: For controlling the DFPlayer Pro module to play MP3 files.
 - **Adafruit_NeoPixel**: For controlling RGB LEDs to indicate proximity to POIs.
+- **SoftwareSerial**: For serial communication with the GNSS module and DFPlayer Pro module (if needed).
+- **HardwareSerial**: For using hardware serial ports to communicate with modules like the GPS.
+- **Wire**: For I2C communication, if any sensors or modules require it.
+- **Stepper**: For controlling the motor via a stepper driver.
 
-You can install these libraries directly through the Arduino IDE Library Manager.
+You can install these libraries directly through the Arduino IDE Library Manager by going to **Sketch > Include Library > Manage Libraries...**, and then searching for the library by name.
 
 ---
 
