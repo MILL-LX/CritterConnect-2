@@ -19,6 +19,7 @@ The system's hardware consists of four major components, which work together to 
 2. **GNSS Module (L76K GNSS Module)**: A GPS receiver that provides real-time location data to the microcontroller.
 3. **MP3 Module (DFPlayer Pro)**: Plays audio files of animal sounds when triggered by the user. It interfaces with a push button and speaker for the sound output.
 4. **Speaker & Button**: The user presses the button to play the sound of the animal when within the ZOI. The speaker emits the animal sound to enhance the experience.
+5. **Motor Driver (Adafruit TB6612 1.2A DC/Stepper Motor Driver)**: Used to control a motor for additional features, such as haptic feedback or a mechanical part within the wearable device.
 
 ## Components
 
@@ -26,7 +27,7 @@ The system's hardware consists of four major components, which work together to 
 
 The **Adafruit Feather RP2040** is a powerful and compact microcontroller that handles communication between the GNSS module, MP3 module, and other components. It is designed for efficient processing and low power consumption, making it ideal for wearable devices.
 
-<img src="https://cdn-learn.adafruit.com/assets/assets/000/100/345/large1024/adafruit_products_FeatherRP_top_angle.jpg?1614788869" width=50% height=50%>
+![Adafruit Feather RP2040](https://cdn-learn.adafruit.com/assets/assets/000/100/345/large1024/adafruit_products_FeatherRP_top_angle.jpg?1614788869)
 
 #### Features:
 - Dual-core ARM Cortex M0+ processor
@@ -40,7 +41,7 @@ The **Adafruit Feather RP2040** is a powerful and compact microcontroller that h
 
 The **L76K GNSS Module** is used to obtain the user’s geographic coordinates. This module communicates with the microcontroller, sending updated location data. The precise GPS data is then used to calculate the proximity to Points of Interest (POIs).
 
-<img src="https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg" width=50% height=50%>
+![L76K GNSS Module](https://files.seeedstudio.com/wiki/Seeeduino-XIAO-Expansion-Board/GPS_Module/L76K/1-L76K-GNSS-Module-for-Seeed-Studio-XIAO-45font.jpg)
 
 #### Key Features:
 - Provides accurate latitude and longitude coordinates
@@ -53,7 +54,7 @@ The **L76K GNSS Module** is used to obtain the user’s geographic coordinates. 
 
 The **DFPlayer Pro** is responsible for playing MP3 files of animal sounds. When the user presses the push button and is within the ZOI, the system triggers the audio playback, providing an immersive animal sound experience.
 
-<img src="https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg" width=50% height=50%>
+![DFPlayer Pro](https://dfimg.dfrobot.com/store/data/DFR0768/DFR0768.jpg)
 
 #### MP3 Player Features:
 - Supports microSD cards to store MP3 audio files
@@ -69,7 +70,7 @@ The **Adafruit Mini Oval Speaker** is used for playing the animal sounds, and th
 
 #### Speaker
 
-<img src="https://cdn-shop.adafruit.com/970x728/3923-02.jpg" width=50% height=50%>
+![Mini Oval Speaker](https://cdn-shop.adafruit.com/970x728/3923-02.jpg)
 
 - Compact 8Ω speaker
 - High-quality audio output for clear animal sounds
@@ -77,11 +78,25 @@ The **Adafruit Mini Oval Speaker** is used for playing the animal sounds, and th
 
 #### Button
 
-<img src="https://cdn-shop.adafruit.com/970x728/3870-00.jpg" width=50% height=50%>
+![Mini On/Off Push Button](https://cdn-shop.adafruit.com/970x728/3870-00.jpg)
 
 - Small and durable push button
 - Used to trigger sound playback
 - Easy to integrate into wearable designs
+
+---
+
+### Motor Driver
+
+The **Adafruit TB6612 1.2A DC/Stepper Motor Driver** is a motor driver module used to control motors for additional features, such as haptic feedback, vibration, or moving parts in the wearable device.
+
+![TB6612 Motor Driver](https://cdn-learn.adafruit.com/assets/assets/000/098/784/large1024/adafruit_products_TB6612.jpg)
+
+#### Features:
+- Drives DC and stepper motors
+- Can control 2 DC motors or 1 stepper motor
+- 1.2A per channel motor drive
+- Low power consumption and compact size for portable use
 
 ---
 
@@ -93,6 +108,7 @@ The components are connected as follows:
 2. The **L76K GNSS Module** is connected to the microcontroller via UART or I2C communication to provide location data.
 3. The **DFPlayer Pro** is connected to the microcontroller and the Adafruit Mini Oval Speaker, providing audio playback.
 4. The **Adafruit Mini On/Off Push Button** is wired to the microcontroller for user input, triggering the animal sound when pressed.
+5. The **Adafruit TB6612 Motor Driver** is connected to control a motor for any mechanical movements or haptic feedback required in the wearable device.
 
 The device is designed to be compact and wearable, with all components carefully integrated into a lightweight form factor.
 
@@ -110,6 +126,7 @@ The firmware for Critter Connect 2 is written in **Arduino** and is compatible w
 - POI proximity detection and LED indication
 - Button input for triggering animal sound playback
 - Efficient power management to ensure long battery life
+- Motor control using the **Adafruit TB6612 Motor Driver** for additional features
 
 ### Libraries Used
 
@@ -120,6 +137,7 @@ The firmware for Critter Connect 2 is written in **Arduino** and is compatible w
 - **HardwareSerial**: For using hardware serial ports to communicate with modules like the GPS.
 - **Wire**: For I2C communication, if any sensors or modules require it.
 - **Stepper**: For controlling the motor via a stepper driver.
+- **TB6612**: For controlling the motor through the Adafruit TB6612 Motor Driver.
 
 You can install these libraries directly through the Arduino IDE Library Manager by going to **Sketch > Include Library > Manage Libraries...**, and then searching for the library by name.
 
@@ -145,3 +163,4 @@ To get started with Critter Connect 2:
 - **Adafruit** for providing the Feather RP2040 and other excellent components.
 - **DFRobot** for the DFPlayer Pro MP3 module.
 - **Seeed Studio** for the L76K GNSS module.
+- **Adafruit** for the TB6612 1.2A DC/Stepper Motor Driver.
