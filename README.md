@@ -20,6 +20,7 @@ The system's hardware consists of four major components, which work together to 
 3. **MP3 Module (DFPlayer Pro)**: Plays audio files of animal sounds when triggered by the user. It interfaces with a push button and speaker for the sound output.
 4. **Speaker & Button**: The user presses the button to play the sound of the animal when within the ZOI. The speaker emits the animal sound to enhance the experience.
 5. **Motor Driver (Adafruit TB6612 1.2A DC/Stepper Motor Driver)**: Used to control a motor for additional features, such as haptic feedback or a mechanical part within the wearable device.
+6. **Motor (DC Motor)**: A motor that could be used for additional feedback or interaction within the device. You can find it [here on AliExpress](https://pt.aliexpress.com/item/1005005997644080.html?spm=a2g0o.productlist.main.117.1c84nP7EnP7EaH&algo_pvid=780f48cc-8881-47bf-9773-e37ec1acd90f&algo_exp_id=780f48cc-8881-47bf-9773-e37ec1acd90f-58&pdp_ext_f=%7B%22order%22%3A%2294%22%2C%22eval%22%3A%221%22%7D&pdp_npi=4%40dis%21EUR%210.62%210.43%21%21%210.63%210.44%21%40211b628117393759409634075e90b3%2112000035233984512%21sea%21PT%210%21ABX&curPageLogUid=WkC2nO0CPNdY&utparam-url=scene%3Asearch%7Cquery_from%3A).
 
 ## Components
 
@@ -109,11 +110,11 @@ The components are connected as follows:
 3. The **DFPlayer Pro** is connected to the microcontroller and the Adafruit Mini Oval Speaker, providing audio playback.
 4. The **Adafruit Mini On/Off Push Button** is wired to the microcontroller for user input, triggering the animal sound when pressed.
 5. The **Adafruit TB6612 Motor Driver** is connected to control a motor for any mechanical movements or haptic feedback required in the wearable device.
+6. The **Motor (DC Motor)** is used for additional feedback or interaction, connected through the Adafruit TB6612 Motor Driver.
 
 The device is designed to be compact and wearable, with all components carefully integrated into a lightweight form factor.
 
 ## Power Supply
-
 
 <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fecocell.com.au%2Fwp-content%2Fuploads%2Fm%2Flipo%2Flipo-400-502535-3w_n.jpg&f=1&nofb=1&ipt=8e4864c284452f1a632edc6070d67a3ab342d56719a59735ab3a75d4d97fa855&ipo=images" width=50% height=50%>
 
@@ -167,3 +168,5 @@ To get started with Critter Connect 2:
 - **DFRobot** for the DFPlayer Pro MP3 module.
 - **Seeed Studio** for the L76K GNSS module.
 - **Adafruit** for the TB6612 1.2A DC/Stepper Motor Driver.
+- **AliExpress** for the DC Motor.
+
