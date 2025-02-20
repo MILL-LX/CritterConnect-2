@@ -723,7 +723,7 @@ void TesteBegin() {
     stepper2.step(stepsPerRevolution);
     stepper2.step(-stepsPerRevolution);
   }
-  DF1201S.playFileNum(4);
+  DF1201S.playFileNum(3);
   delay(2000);
   DF1201S.pause();
   Serial.println("Test Completed!");
