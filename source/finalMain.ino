@@ -70,6 +70,7 @@ CoordinatesBirds *loadCoordinatesFiles(int &numCoordinates);
 float haversineDistance(float lat1, float lon1, float lat2, float lon2);
 float toRadians(float degree);
 void TesteBegin();
+void displayInfo();
 
 
 void setup() {
